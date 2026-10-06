@@ -18,7 +18,8 @@ filterwarnings = ["error"]
 testpaths = ["cdt_bindings_test.py"]
 
 [tool.cibuildwheel]
-test-command = "pytest {project}/cdt_bindings_test.py"
+test-command = "pytest cdt_bindings_test.py"
+test-sources = ["cdt_bindings_test.py", "CDT/visualizer/data"]  # the tests read input files by paths relative to the project
 test-extras = ["test"]
 test-requires = ["numpy"]  # the tests import numpy; the test extra holds only pytest
 test-skip = ["*universal2:arm64"]
