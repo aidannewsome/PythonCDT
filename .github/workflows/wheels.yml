@@ -40,6 +40,8 @@ jobs:
       # Builds every CPython cibuildwheel supports, free-threaded included, and runs
       # the tests in pyproject.toml's [tool.cibuildwheel] against each wheel.
       - uses: pypa/cibuildwheel@v4.3.0
+        env:
+          CIBW_ARCHS_WINDOWS: AMD64  # 64-bit only, as CI covers
       - uses: actions/upload-artifact@v7
         with:
           name: dist-wheels-${{ matrix.os }}
